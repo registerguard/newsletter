@@ -26,14 +26,14 @@ def createCampaign(key):
 	meta['recipients'] = {
 		'segment_opts': {
 			'conditions': [{
-				# 'field': 'EMAIL',
-				# 'condition_type': 'EmailAddress',
-				# 'value': 'rob.denton',
-				# 'op': 'contains'
-				'field': 'interests-3fcd22fb3e',
-				'condition_type': 'Interests',
-				'value': ['a51e8d83ce'],
-				'op': 'interestcontains'
+				'field': 'EMAIL',
+				'condition_type': 'EmailAddress',
+				'value': 'rob.denton',
+				'op': 'contains'
+				#'field': 'interests-3fcd22fb3e',
+				#'condition_type': 'Interests',
+				#'value': ['a51e8d83ce'],
+				#'op': 'interestcontains'
 			}],
 			'match': 'any'
 		},
@@ -41,9 +41,9 @@ def createCampaign(key):
 	}
 	
 	meta['settings'] = {
-		'subject_line': '[TESTING] RG Daily Digest: *|DATE:l, F j, Y|*',
+		'subject_line': '[TESTING] Duck news daily: *|DATE:l, F j, Y|*',
 		'from_name': 'The Register-Gard',
-		'title': 'Rob API Test: {0}'.format(date),
+		'title': 'Rob API Duck News Test: {0}'.format(date),
 		'inline_css': True,
 		'fb_comments': False,
 		'auto_footer': False,
@@ -80,7 +80,7 @@ def setContent(key, id):
 	content = "campaigns/{0}/content".format(id)
 	endpoint = config.api_root + content
 	
-	payload = json.dumps({"url": "http://registerguard.com/csp/cms/rg/pages/newsletters/news.csp"})
+	payload = json.dumps({"url": "http://registerguard.com/csp/cms/rg/pages/newsletters/football.csp"})
 	
 	response = requests.put(endpoint, auth=('apikey', key), data=payload)
 	
