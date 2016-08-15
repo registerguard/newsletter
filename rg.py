@@ -131,5 +131,5 @@ campaign_id = createCampaign(config.apikey)
 #campaign_id = "ea9d94e671" # For testing (use last created campaign ID)
 #print campaign_id
 setContent(config.apikey, campaign_id)
-#sendTest(config.apikey, campaign_id)
-sendEmail(config.apikey, campaign_id)
+sendTest(config.apikey, campaign_id)
+#sendEmail(config.apikey, campaign_id)
