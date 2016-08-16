@@ -26,14 +26,14 @@ def createCampaign(key):
 	meta['recipients'] = {
 		'segment_opts': {
 			'conditions': [{
-				'field': 'EMAIL',
-				'condition_type': 'EmailAddress',
-				'value': 'rob.denton',
-				'op': 'contains'
-				#'field': 'interests-3fcd22fb3e',
-				#'condition_type': 'Interests',
-				#'value': ['a51e8d83ce'],
-				#'op': 'interestcontains'
+				#'field': 'EMAIL',
+				#'condition_type': 'EmailAddress',
+				#'value': 'rob.denton',
+				#'op': 'contains'
+				'field': 'interests-3fcd22fb3e',
+				'condition_type': 'Interests',
+				'value': ['a51e8d83ce'],
+				'op': 'interestcontains'
 			}],
 			'match': 'any'
 		},
@@ -42,7 +42,7 @@ def createCampaign(key):
 	
 	meta['settings'] = {
 		'subject_line': '[TESTING] Duck news daily: *|DATE:l, F j, Y|*',
-		'from_name': 'The Register-Gard',
+		'from_name': 'The Register-Guard',
 		'title': 'Rob API Duck News Test: {0}'.format(date),
 		'inline_css': True,
 		'fb_comments': False,

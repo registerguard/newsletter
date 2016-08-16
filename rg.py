@@ -42,7 +42,7 @@ def createCampaign(key):
 	
 	meta['settings'] = {
 		'subject_line': '[TESTING] RG Daily Digest: *|DATE:l, F j, Y|*',
-		'from_name': 'The Register-Gard',
+		'from_name': 'The Register-Guard',
 		'title': 'Rob API Test: {0}'.format(date),
 		'inline_css': True,
 		'fb_comments': False,
