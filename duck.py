@@ -26,24 +26,34 @@ def createCampaign(key):
 	meta['recipients'] = {
 		'segment_opts': {
 			'conditions': [{
+				### Send to Rob
 				#'field': 'EMAIL',
 				#'condition_type': 'EmailAddress',
 				#'value': 'rob.denton',
 				#'op': 'contains'
-				'field': 'interests-3fcd22fb3e',
-				'condition_type': 'Interests',
-				'value': ['a51e8d83ce'],
-				'op': 'interestcontains'
+				###################################
+				### Send to Test group
+				#'field': 'interests-3fcd22fb3e',
+				#'condition_type': 'Interests',
+				#'value': ['a51e8d83ce'],
+				#'op': 'interestcontains'
+				###################################
+				### REAL list
+				'field':'interests-c7a0ec6b55',
+				'condition_type':'Interests',
+				'value':[ 'f85f0f3bb3' ],
+				'op':'interestcontains'
 			}],
 			'match': 'any'
 		},
-		'list_id': '824c7efd1d'
+		#'list_id': '824c7efd1d'
+		'list_id':'d53bd3b699'
 	}
 	
 	meta['settings'] = {
-		'subject_line': '[TESTING] Duck news daily: *|DATE:l, F j, Y|*',
+		'subject_line': 'Duck News Daily: *|DATE:l, F j, Y|*',
 		'from_name': 'The Register-Guard',
-		'title': 'Rob API Duck News Test: {0}'.format(date),
+		'title': 'Duck News Daily: {0}'.format(date),
 		'inline_css': True,
 		'fb_comments': False,
 		'auto_footer': False,
@@ -94,7 +104,7 @@ def sendTest(key, id):
 	test = "campaigns/{0}/actions/test".format(id)
 	endpoint = config.api_root + test
 	
-	payload = json.dumps({"test_emails":["robdentonrg@gmail.com"],"send_type":"html"})
+	payload = json.dumps({"test_emails":["rob.denton@registerguard.com.com"],"send_type":"html"})
 	
 	#print  "\nPayload: " + payload
 	

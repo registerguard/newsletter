@@ -26,24 +26,34 @@ def createCampaign(key):
 	meta['recipients'] = {
 		'segment_opts': {
 			'conditions': [{
+				### Just Rob
 				# 'field': 'EMAIL',
 				# 'condition_type': 'EmailAddress',
 				# 'value': 'rob.denton',
 				# 'op': 'contains'
-				'field': 'interests-3fcd22fb3e',
-				'condition_type': 'Interests',
-				'value': ['a51e8d83ce'],
-				'op': 'interestcontains'
+				#######################################
+				### Test group
+				#'field': 'interests-3fcd22fb3e',
+				#'condition_type': 'Interests',
+				#'value': ['a51e8d83ce'],
+				#'op': 'interestcontains'
+				#######################################
+				### REAL group
+				'field':'interests-c7a0ec6b55',
+				'condition_type':'Interests',
+				'value':[ 'd6c751e1cf' ],
+				'op':'interestcontains'
 			}],
 			'match': 'any'
 		},
-		'list_id': '824c7efd1d'
+		#'list_id': '824c7efd1d'
+		'list_id': 'd53bd3b699'
 	}
 	
 	meta['settings'] = {
-		'subject_line': '[TESTING] RG Daily Digest: *|DATE:l, F j, Y|*',
+		'subject_line': 'RG Daily Digest: *|DATE:l, F j, Y|*',
 		'from_name': 'The Register-Guard',
-		'title': 'Rob API Test: {0}'.format(date),
+		'title': 'RG Daily Digest: {0}'.format(date),
 		'inline_css': True,
 		'fb_comments': False,
 		'auto_footer': False,
