@@ -46,7 +46,9 @@ def createCampaign(key):
 			}],
 			'match': 'any'
 		},
+		### Test list
 		#'list_id': '824c7efd1d'
+		### REAL list
 		'list_id':'d53bd3b699'
 	}
 	
@@ -104,7 +106,7 @@ def sendTest(key, id):
 	test = "campaigns/{0}/actions/test".format(id)
 	endpoint = config.api_root + test
 	
-	payload = json.dumps({"test_emails":["rob.denton@registerguard.com.com"],"send_type":"html"})
+	payload = json.dumps({"test_emails":["robdentonrg@gmail.com"],"send_type":"html"})
 	
 	#print  "\nPayload: " + payload
 	
