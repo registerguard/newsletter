@@ -33,21 +33,23 @@ def createCampaign(key):
 				# 'op': 'contains'
 				#######################################
 				### Test group
-				#'field': 'interests-3fcd22fb3e',
-				#'condition_type': 'Interests',
-				#'value': ['a51e8d83ce'],
-				#'op': 'interestcontains'
+				'field': 'interests-3fcd22fb3e',
+				'condition_type': 'Interests',
+				'value': ['a51e8d83ce'],
+				'op': 'interestcontains'
 				#######################################
 				### REAL group
-				'field':'interests-c7a0ec6b55',
-				'condition_type':'Interests',
-				'value':[ 'd6c751e1cf' ],
-				'op':'interestcontains'
+				#'field':'interests-c7a0ec6b55',
+				#'condition_type':'Interests',
+				#'value':[ 'd6c751e1cf' ],
+				#'op':'interestcontains'
 			}],
-			'match': 'any'
+			'match': 'all'
 		},
-		#'list_id': '824c7efd1d'
-		'list_id': 'd53bd3b699'
+		### Test group
+		'list_id': '824c7efd1d'
+		### REAL group
+		#'list_id': 'd53bd3b699'
 	}
 	
 	meta['settings'] = {
