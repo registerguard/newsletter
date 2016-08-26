@@ -61,7 +61,7 @@ def createCampaign(key):
 		'auto_footer': False,
 		'athenticate': True,
 		'to_name': '*|FNAME|* *|LNAME|*',
-		'folder_id': '',
+		'folder_id': '8a260761a0',
 		'reply_to': 'promotions@registerguard.com',
 		'auto_tweet': False,
 	}

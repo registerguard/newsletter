@@ -6,6 +6,8 @@ If you clone this and run it you may be sending to the entire list. Please read 
 
 ### Intro
 
+> Before you begin, you might want to take a look at how the basic.py script works.
+
 This repo contains the scripts used to generate, scrape and send MailChimp campaigns via the MailChimp API v3. These scripts have nothing to do with the design or content of the newsletters. Those templates can be edited at /rg/pages/newsletters/news.csp || football.csp. 
 
 Additional notes can be found in tracker#617.
@@ -54,7 +56,13 @@ Absolute paths to the virtualenv python and the script are necessary. Any errors
 * I used [merge tags](http://kb.mailchimp.com/merge-tags/all-the-merge-tags-cheat-sheet) as much as I could but had to use the system date for the title, can't remember why at the moment.
 * "inline css" is helpful because some email clients won't read head style tags (ahem, Google).
 
+### IDs you should know
+
+TK
+* Daily Digest folder ID: 9f4465721a
+* Duck News Daily folder ID: 8a260761a0
 
 ### To-do
 
 * [ ] Modify scripts to that they're pulling in communal functions, each one of those could be stripped off into a class.
+
