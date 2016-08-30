@@ -24,8 +24,8 @@ def createCampaign(key):
 	meta = {}
 	
 	meta['recipients'] = {
-		'segment_opts': {
-			'conditions': [{
+		#'segment_opts': {
+		#	'conditions': [{
 				### Send to Rob
 				#'field': 'EMAIL',
 				#'condition_type': 'EmailAddress',
@@ -39,17 +39,21 @@ def createCampaign(key):
 				#'op': 'interestcontains'
 				###################################
 				### REAL list
-				'field':'interests-c7a0ec6b55',
-				'condition_type':'Interests',
-				'value':[ 'f85f0f3bb3' ],
-				'op':'interestcontains'
-			}],
-			'match': 'any'
-		},
+		#		'field':'interests-c7a0ec6b55',
+		#		'condition_type':'Interests',
+		#		'value':[ 'f85f0f3bb3' ],
+		#		'op':'interestcontains'
+		#	}],
+		#	'match': 'any'
+		#},
 		### Test list
 		#'list_id': '824c7efd1d'
 		### REAL list
-		'list_id':'d53bd3b699'
+		#'list_id':'d53bd3b699'
+		###
+		### NEW Duck News Daily list
+		###
+		'list_id': 'da06b9d3a2'
 	}
 	
 	meta['settings'] = {

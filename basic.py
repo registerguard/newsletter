@@ -4,7 +4,7 @@ from config import MailChimpConfig
 config = MailChimpConfig()
 
 ### Change depending on what API content you're after
-path = "campaign-folders"
+path = "lists"
 ### Concatenate full API address
 endpoint = config.api_root + path
 #print endpoint

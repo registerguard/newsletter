@@ -58,9 +58,17 @@ Absolute paths to the virtualenv python and the script are necessary. Any errors
 
 ### IDs you should know
 
-TK
-* Daily Digest folder ID: 9f4465721a
-* Duck News Daily folder ID: 8a260761a0
+#### List IDs
+
+* RG Daily Digest: `09a7fee6c3`
+* Duck News Daily: `da06b9d3a2`
+* go Entertainment: `6a14143afa`
+* Contests and Promotions: `079255517e`
+
+#### Folder IDs
+
+* Daily Digest: `9f4465721a`
+* Duck News Daily: `8a260761a0`
 
 ### To-do
 
