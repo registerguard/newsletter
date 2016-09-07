@@ -10,7 +10,7 @@ If you clone this and run it you may be sending to the entire list. Please read 
 
 * This repo contains the scripts used to generate, scrape and send MailChimp campaigns via the MailChimp API v3. These scripts have nothing to do with the design or content of the newsletters. Those templates can be edited at /rg/pages/newsletters/news.csp || football.csp.
 
-* Additional notes can be found in registerguard/tracker#617.
+* Additional notes can be found in [tracker#617](https://github.com/registerguard/tracker/issues/617).
 
 * The only requirement for this is requests 2.11. You can install that via `pip install requests` or `pip install -r requirements.txt`. Please note: I have a virtualenv set up on my local machine and on the server called "mailchimp".
 

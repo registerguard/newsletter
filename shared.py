@@ -76,14 +76,14 @@ def setContent(id, url):
     try:
         response.raise_for_status()
     except requests.exceptions.HTTPError as err:
-        print '\n\n\nError: %s' % err
+        print "\n\n\nError: %s" % err
         print response.json()
 
 def sendTest(id, test_emails):
     test = "campaigns/{0}/actions/test".format(id)
     endpoint = config.api_root + test
     
-    payload = json.dumps({"test_emails": test_emails,"send_type":"html"})
+    payload = json.dumps({'test_emails': test_emails,'send_type':'html'})
     
     #print  "\nPayload: " + payload
     
@@ -96,7 +96,7 @@ def sendTest(id, test_emails):
         response.raise_for_status()
         print "\n\nTEST SENT!!!\n\n"
     except requests.exceptions.HTTPError as err:
-        print '\n\n\nError: %s' % err
+        print "\n\n\nError: %s" % err
         
     
 
@@ -112,6 +112,6 @@ def sendEmail(id):
         response.raise_for_status()
         #print "\n\nCAMPAIGN SENT!!!\n\n"
     except requests.exceptions.HTTPError as err:
-        print '\n\n\nError: %s' % err
+        print "\n\n\nError: %s" % err
         print response.json()
         

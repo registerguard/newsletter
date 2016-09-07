@@ -17,9 +17,9 @@ date = "{:%x}".format(today)
 
 # Vars for campaign creation
 #list = "" # Safety
-list = "09a7fee6c3" # RG Daily Digest list
-subject = 'RG Daily Digest: *|DATE:l, F j, Y|*'
-title = 'RG Daily Digest: {0}'.format(date)
+list = '09a7fee6c3' # RG Daily Digest list
+subject = "RG Daily Digest: *|DATE:l, F j, Y|*"
+title = "RG Daily Digest: {0}".format(date)
 folder = '9f4465721a'
 
 # Create campaign and get ID
@@ -28,13 +28,13 @@ id = createCampaign(list, subject, title, folder)
 print id
 
 # Vars for setting content
-url = "http://registerguard.com/csp/cms/rg/pages/newsletters/news.csp"
+url = 'http://registerguard.com/csp/cms/rg/pages/newsletters/news.csp'
 
 # Set content
 setContent(id, url)
 
 # Vars for test email
-test_emails = ["robdentonrg@gmail.com"]
+test_emails = ['robdentonrg@gmail.com']
 
 #Send test (Normally commented out)
 #sendTest(id, test_emails)
