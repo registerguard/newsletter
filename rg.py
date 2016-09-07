@@ -25,7 +25,7 @@ folder = '9f4465721a'
 # Create campaign and get ID
 id = createCampaign(list, subject, title, folder)
 #id = "ea9d94e671" # For testing (use last created campaign ID)
-print id
+#print id
 
 # Vars for setting content
 url = 'http://registerguard.com/csp/cms/rg/pages/newsletters/news.csp'
