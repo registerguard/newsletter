@@ -42,7 +42,17 @@ def createCampaign(list, subject, title, folder):
         'to_name': '*|FNAME|* *|LNAME|*',
         'folder_id': folder,
         'reply_to': 'promotions@registerguard.com',
-        'auto_tweet': False,
+        'auto_tweet': False
+    }
+    
+    meta['tracking'] = {
+        'text_clicks': False,
+        'ecomm360': False,
+        'goal_tracking': False,
+        'clicktale': '',
+        'html_clicks': False,
+        'google_analytics': '',
+        'opens': True
     }
     
     meta['type'] = 'regular'
