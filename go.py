@@ -17,10 +17,10 @@ date = "{:%x}".format(today)
 
 # Vars for campaign creation
 #list = "" # Safety
-list = 'da06b9d3a2' # Duck News Daily list
-subject = "Duck News Daily: *|DATE:l, F j, Y|*"
-title = "Duck News Daily: {0}".format(date)
-folder = '8a260761a0'
+list = '6a14143afa' # go Entertainment list
+subject = "Go Entertainment: *|DATE:l, F j, Y|*"
+title = "Go Entertainment: {0}".format(date)
+folder = '08c9b77b57'
 
 # Create campaign and get ID
 id = createCampaign(list, subject, title, folder)
@@ -28,13 +28,13 @@ id = createCampaign(list, subject, title, folder)
 #print id
 
 # Vars for setting content
-url = 'http://registerguard.com/csp/cms/rg/pages/newsletters/football.csp'
+url = 'http://registerguard.com/csp/cms/rg/pages/newsletters/entertainment.csp'
 
 # Set content
 setContent(id, url)
 
 # Vars for test email
-test_emails = ['rob.denton@registerguard.com','melissa.caven@registerguard.com']
+test_emails = ['robdentonrg@gmail.com']
 
 #Send test (Normally commented out)
 #sendTest(id, test_emails)

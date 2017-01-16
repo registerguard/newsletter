@@ -5,7 +5,7 @@ config = MailChimpConfig()
 
 ### Change depending on what API content you're after
 #path = "lists"
-#path = "/campaigns/2ccdaab862" # Get campaign ID as c value of unsubscribe link
+path = "/campaigns/2ccdaab862" # Get campaign ID as c value of unsubscribe link
 ### Concatenate full API address
 endpoint = config.api_root + path
 #print endpoint
