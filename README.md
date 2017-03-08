@@ -39,6 +39,17 @@ Add, commit and push your changes.
 
 SSH to newsoper@wave (only available inside building, see [here](https://github.com/registerguard/tracker/wiki/Accessing-Wave%2C-the-cron-machine) for additional instructions on how to do this) and `cd Envs/mailchimp/newsletter`. Do a `git status` to double check that there are no changes on production. Do a `git remote update && git status` to do a sanity check on how many commits you're behind or to see if there are any potential conflicts. When you're ready do a `git pull`. Now production is up to date and the next time the cron runs your updated script will run.
 
+### Adding a new newsletter
+
+* Make new file for script, possibly made off of news.py
+* Get make list and folder, get IDs from APIv3 Mailchimp scripts
+* Test making campaign, make sure list and folder are correct
+* Send test campaign
+* Try sending real campaign (As long as you are the only subscriber)
+* Push changes
+* Pull changes on wave
+* Set up cron on wave (make sure config file set up correctly)
+
 ### Misc.
 
 #### cron
