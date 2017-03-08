@@ -58,6 +58,16 @@ When you're ready do a `git pull`. Now production is up to date and the next tim
 * Pull changes on [wave](https://github.com/registerguard/tracker/wiki/Accessing-Wave%2C-the-cron-machine)
 * Set up cron on wave (make sure config file set up correctly and that the `sendEmail()` is ready to rock and roll)
 
+### Basic flow of a newsletter script (think rg.py)
+
+1. Import stuffs including the shared methods
+1. Get today's date for title
+1. Set vars including the list and folder IDs
+1. Use shared createCampaign method to generate new campaign in MailChimp system
+1. Set the content of that campaign using the HTML from the provided url
+1. Test email stuff
+1. Send the campaign
+
 ### Misc.
 
 #### The cron
@@ -112,7 +122,5 @@ sendTest(id, test_emails)
 * I used [merge tags](http://kb.mailchimp.com/merge-tags/all-the-merge-tags-cheat-sheet) as much as I could but had to use the system date for the title, can't remember why at the moment.
 * "inline css" is helpful because some email clients won't read head style tags (ahem, Google).
 
-## Future Rob problems
 
-* Find a better way to organize all the newsletter scripts into a folder so they don't clutter the root
 
