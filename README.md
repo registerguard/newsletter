@@ -6,29 +6,31 @@ If you clone this and run it you may be sending to the entire list. Please read 
 
 ### Intro notes
 
-* Before you begin, you might want to take a look at how the basic.py script works.
+* Before you begin, you might want to take a look at how the basic.py script works. You may also need to check out our fork of the [MailChimp API v3 repo](https://github.com/registerguard/APIv3-examples) that has some additional documentation.
 
-* This repo contains the scripts used to generate, scrape and send MailChimp campaigns via the MailChimp API v3. These scripts have nothing to do with the design or content of the newsletters. Those templates can be edited at /rg/pages/newsletters/news.csp || football.csp.
+* This repo contains the scripts used to generate, scrape and send MailChimp campaigns via the MailChimp API v3. These scripts have nothing to do with the design or content of the newsletters. Those templates can be edited at /rg/pages/newsletters/news.csp || football.csp || etc.
 
-* Additional notes can be found in [tracker#617](https://github.com/registerguard/tracker/issues/617).
+* Additional RG-specific notes can be found in [tracker#617](https://github.com/registerguard/tracker/issues/617) (private).
 
-* The only requirement for this is requests 2.11. You can install that via `pip install requests` or `pip install -r requirements.txt`. Please note: I have a virtualenv set up on my local machine and on the server called "mailchimp".
+* The only requirement for this is requests 2.11. You can install that via `pip install requests` or `pip install -r requirements.txt`. Please note: I have a virtualenv set up on my local machine and on the server called "mailchimp". If you do this, you can also use that virtualenv for work with our fork of the [MailChimp API v3 repo](https://github.com/registerguard/APIv3-examples).
 
-* Before beginning you will need to add a file called APIKEY in the root that contains the MailChimp APIKEY. This is being kept secret just in case this repo was ever accidentally made public. This can be found [here](https://us2.admin.mailchimp.com/account/api/)
+* **Before beginning you will need to add a file called APIKEY in the root that contains our MailChimp APIKEY. This file is excluded to make this repo public. The file should be one line only and named APIKEY. API keys can be found on the [MailChimp site](https://us2.admin.mailchimp.com/account/api/).**
 
-### Getting started
+### Getting started from scratch
 
 Clone the repo, `mkvirtualenv mailchimp`, `pip install -r requirements.txt`.
 
-**First things first, go into duck.py and rg.py and make sure the very last line is commented out.** These two lines are responsible for sending the campaign to our hundreds of subscribers. Later on, you may or may not want to do this but it is **really** easy to accidentally send out a campaign during testing so it's good to double check this before running the script.
+**Depending on what file you want to edit, you'll want to comment out the last line in that file.** This line is responsible for sending the campaign to our hundreds of subscribers. Later on, you may or may not want to do this but it is **really** easy to accidentally send out a campaign during testing so it's good to double check this before running the script.
 
-Now, go into the config.py and check your APIKEY path (it's on two lines). When the cron runs on the server, it needs an absolute path but during testing that absolute path is incorrect so it needs to be commented out.
+*You do not want to send out a blast to all subscribers during dev work.* Down below there are some [other ways to test send the campaign](#user-content-testing-sendemail).
+
+Now, go into the config.py and check your APIKEY path (it's on two lines). When the cron runs on the server, it needs an absolute path but during testing that absolute path is incorrect so it needs to be commented out and replaced with a relative path. This could be set by some sort of dev bool conditional but I like the added safety of not being able to send if you don't know what you're doing. It's an added reminder to comment out `sendEmail()`.
 
 Now, you can go in and make whatever changes are necessary.
 
 ...
 
-When you're ready to test, go into the test function and add your email where mine is. Then go down to the bottom and uncomment the testEmail function line and make sure that the sendEmail function **is** still commented out. Now you can run the script (ie: `python rg.py`) and it should say "TEST SENT!!!". This test email will only be sent to those included in the script. This is the same on both scripts.
+When you're ready to test, go into the test function and add your email where mine is. Then go down to the bottom and uncomment the testEmail function line and *make sure that the sendEmail function is still commented out*. Now you can run the script (ie: `python rg.py`) and it should say "TEST SENT!!!". This test email will only be sent to those included in the script. This is the same on both scripts.
 
 Once you've made the correct changes and you're ready to push back up there are two things to change.
 
@@ -37,24 +39,30 @@ Once you've made the correct changes and you're ready to push back up there are 
 
 Add, commit and push your changes.
 
-SSH to newsoper@wave (only available inside building, see [here](https://github.com/registerguard/tracker/wiki/Accessing-Wave%2C-the-cron-machine) for additional instructions on how to do this) and `cd Envs/mailchimp/newsletter`. Do a `git status` to double check that there are no changes on production. Do a `git remote update && git status` to do a sanity check on how many commits you're behind or to see if there are any potential conflicts. When you're ready do a `git pull`. Now production is up to date and the next time the cron runs your updated script will run.
+SSH to newsoper@wave (only available inside building, see [here](https://github.com/registerguard/tracker/wiki/Accessing-Wave%2C-the-cron-machine) for additional instructions on how to do this) and `cd Envs/mailchimp/newsletter`. Do a `git status` to double check that there are no changes on production. Do a `git remote update && git status` to do a sanity check on how many commits you're behind or to see if there are any potential conflicts. 
 
-### Adding a new newsletter
+When you're ready do a `git pull`. Now production is up to date and the next time the cron runs your updated script will run.
 
+### Adding a new newsletter to the mix
+
+* Set up stuff locally
 * Make new file for script, possibly made off of news.py
-* Get make list and folder, get IDs from APIv3 Mailchimp scripts
-* Test making campaign, make sure list and folder are correct
-* Send test campaign
-* Try sending real campaign (As long as you are the only subscriber)
-* Push changes
-* Pull changes on wave
-* Set up cron on wave (make sure config file set up correctly)
+* Go into your MailChimp account and make a new list (be sure to set up the form styling [you can copy the styling of the other newsletters, they're all the same])
+* While you're in there, be sure to create a new folder for all the emails to be collected in or else Melissa will get mad at you :)
+* Now you need to get the IDs for that list and folder, the easiest way is to use `folders.py` and `lists.py` from the [MailChimp API v3 repo](https://github.com/registerguard/APIv3-examples)
+* With `testEmail()` and `sendEmail()` commented out, try to create a new campaign in order to confirm that the list and folder are correct - YOU DO NOT WANT TO ACCIDENTALLY `sendEmail()` TO THE WRONG LIST.
+* Try to send a `testEmail()`
+* If you are the only one in the new list, try `sendEmail()`
+* Change the APIKEY path to what's needed on wave
+* Add, commit, push changes
+* Pull changes on [wave](https://github.com/registerguard/tracker/wiki/Accessing-Wave%2C-the-cron-machine)
+* Set up cron on wave (make sure config file set up correctly and that the `sendEmail()` is ready to rock and roll)
 
 ### Misc.
 
-#### cron
+#### The cron
 
-The wave machine datetime is about five minutes early, meaning that I schedule the crons to go out five minutes before we want them. The Duck News Digest is set for `55 10 * * * ...` and the RG Daily Digest is set for `55 4 * * * ...`.
+The [wave](https://github.com/registerguard/tracker/wiki/Accessing-Wave%2C-the-cron-machine) machine datetime is about five minutes early, meaning that I schedule the crons to go out five minutes before we want them. The Duck News Digest is set for `55 10 * * * ...` and the RG Daily Digest is set for `55 4 * * * ...`.
 
 Absolute paths to the virtualenv python and the script are necessary. Any errors will be emailed to John and I via the MAILTO functionality. I previously had them writing out to a log file via:
 
@@ -64,7 +72,7 @@ Absolute paths to the virtualenv python and the script are necessary. Any errors
 
 #### Testing `sendEmail()`
 
-It may seem difficult to test the `sendEmail()` function but you can do this by targeting a "test" list and specify that the campaign should only be sent to emails containing "rob.denton". This is very similar to how we originally wanted to target campaigns via interest groups within lists. We no longer do this but the logic is good to remember. It can also be found by setting up logic from the MailChimp UI and doing a read on the the API on the campaign ID.
+It may seem difficult to test the `sendEmail()` function because you don't want to send to everyone in the list, but you can do this by targeting a "test" list and specify that the campaign should only be sent to emails containing "rob.denton". This is very similar to how we originally wanted to target campaigns via interest groups within lists. We no longer do this but the logic is good to remember. It can also be found by setting up logic from the MailChimp UI and doing a read on the the API on the campaign ID.
 
 ```python
 'segment_opts': { # This stuff only for testing
@@ -87,6 +95,16 @@ It may seem difficult to test the `sendEmail()` function but you can do this by 
 'list_id': '824c7efd1d'
 ```
 
+Of course, you can also send test emails to the emails designated in the script.
+
+```python
+# Vars for test email
+test_emails = ['robdentonrg@gmail.com']
+
+#Send test (Normally commented out)
+sendTest(id, test_emails)
+```
+
 ### Helpful links and hints
 
 * [Mailchimp documentation](http://developer.mailchimp.com/documentation/mailchimp/reference/overview/)
@@ -94,20 +112,7 @@ It may seem difficult to test the `sendEmail()` function but you can do this by 
 * I used [merge tags](http://kb.mailchimp.com/merge-tags/all-the-merge-tags-cheat-sheet) as much as I could but had to use the system date for the title, can't remember why at the moment.
 * "inline css" is helpful because some email clients won't read head style tags (ahem, Google).
 
-### IDs you should know
+## Future Rob problems
 
-#### List IDs
+* Find a better way to organize all the newsletter scripts into a folder so they don't clutter the root
 
-* RG Daily Digest: `09a7fee6c3`
-* Duck News Daily: `da06b9d3a2`
-* go Entertainment: `6a14143afa`
-* Contests and Promotions: `079255517e`
-
-#### Folder IDs
-
-* Daily Digest: `9f4465721a`
-* Duck News Daily: `8a260761a0`
-
-### To-do
-
-* [x] Modify scripts to that they're pulling in communal functions, each one of those could be stripped off into a class.
