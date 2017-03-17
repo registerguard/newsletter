@@ -47,7 +47,7 @@ When you're ready do a `git pull`. Now production is up to date and the next tim
 
 * Set up stuff locally
 * Make new file for script, possibly made off of news.py
-* Go into your MailChimp account and make a new list (be sure to set up the form styling [you can copy the styling of the other newsletters, they're all the same])
+* Go into your MailChimp account and make a new list by replicating a list that's already been created, like RG Business (be sure to double check the form styling [you can copy the styling of the other newsletters, they're all the same] and the form title as it may pull the old form's name)
 * While you're in there, be sure to create a new folder for all the emails to be collected in or else Melissa will get mad at you :)
 * Now you need to get the IDs for that list and folder, the easiest way is to use `folders.py` and `lists.py` from the [MailChimp API v3 repo](https://github.com/registerguard/APIv3-examples)
 * With `testEmail()` and `sendEmail()` commented out, try to create a new campaign in order to confirm that the list and folder are correct - YOU DO NOT WANT TO ACCIDENTALLY `sendEmail()` TO THE WRONG LIST.

@@ -41,7 +41,7 @@ def createCampaign(list, subject, title, folder):
         'athenticate': True,
         'to_name': '*|FNAME|* *|LNAME|*',
         'folder_id': folder,
-        'reply_to': 'promotions@registerguard.com',
+        'reply_to': 'newsletters@registerguard.com',
         'auto_tweet': False
     }
     
