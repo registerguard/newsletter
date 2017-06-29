@@ -17,7 +17,8 @@ date = "{:%x}".format(today)
 
 # Vars for campaign creation
 #list = "" # Safety
-list = '09a7fee6c3' # RG Daily Digest list
+#list = '09a7fee6c3' # RG Daily Digest list --- OLD LIST
+list = 'ebb49abb5c' # RG Daily Digest NEW list
 subject = "RG Daily Digest: *|DATE:l, F j, Y|*"
 title = "RG Daily Digest: {0}".format(date)
 folder = '9f4465721a'
