@@ -35,7 +35,7 @@ url = 'http://registerguard.com/csp/cms/rg/pages/newsletters/afternoon.csp'
 setContent(id, url)
 
 # Vars for test email
-test_emails = ['robdentonrg@gmail.com']
+test_emails = ['john.heasly@registerguard.com', 'rob.denton@registerguard.com', 'robdentonrg@gmail.com', 'robdentonrg3@aol.com', 'robdentonrg@yahoo.com', 'robdentonrg@outlook.com']
 
 #Send test (Normally commented out)
 sendTest(id, test_emails)
