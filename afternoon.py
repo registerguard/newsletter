@@ -18,10 +18,10 @@ date = "{:%x}".format(today)
 # Vars for campaign creation
 #list = "" # Safety
 list = '824c7efd1d' # Test list
-#list = 'ebb49abb5c' # RG Daily Digest NEW list
+#list = 'ebb49abb5c' # RG Afternoon Update list
 subject = "RG Afternoon Update: *|DATE:l, F j, Y|*"
 title = "RG Afternoon Update: {0}".format(date)
-folder = "9f4465721a"
+folder = "a38426f0ef"
 
 # Create campaign and get ID
 id = createCampaign(list, subject, title, folder)
@@ -35,10 +35,10 @@ url = 'http://registerguard.com/csp/cms/rg/pages/newsletters/afternoon.csp'
 setContent(id, url)
 
 # Vars for test email
-test_emails = ['john.heasly@registerguard.com', 'rob.denton@registerguard.com', 'robdentonrg@gmail.com', 'robdentonrg3@aol.com', 'robdentonrg@yahoo.com', 'robdentonrg@outlook.com']
+test_emails = ['rob.denton@registerguard.com']
 
 #Send test (Normally commented out)
-sendTest(id, test_emails)
+#sendTest(id, test_emails)
 
 # Call method
-#sendEmail(id)
+sendEmail(id)
